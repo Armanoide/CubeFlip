@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="8191" systemVersion="14F27" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="tDe-Nj-ZVB">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="8154"/>
+    </dependencies>
+    <scenes>
+        <!--Master View Controller-->
+        <scene sceneID="VpJ-U8-8xX">
+            <objects>
+                <viewController storyboardIdentifier="YAS" useStoryboardIdentifierAsRestorationIdentifier="YES" id="tDe-Nj-ZVB" customClass="MasterViewController" customModule="CubeFlip" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="qKp-ta-khp"/>
+                        <viewControllerLayoutGuide type="bottom" id="f4y-yR-w13"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="Ups-Ia-1tD">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="euM-gG-rsy">
+                                <rect key="frame" x="200" y="501" width="200" height="30"/>
+                                <color key="backgroundColor" red="0.20392156859999999" green="0.39607843139999999" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="BtR-Q5-ZOh"/>
+                                    <constraint firstAttribute="height" constant="30" id="Rhr-BH-blE"/>
+                                </constraints>
+                                <state key="normal" title="Flip DOWN">
+                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cvn-74-UDm">
+                                <rect key="frame" x="200" y="456" width="200" height="30"/>
+                                <color key="backgroundColor" red="0.20392156859999999" green="0.39607843139999999" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="1cb-is-6Ov"/>
+                                    <constraint firstAttribute="height" constant="30" id="tJH-kJ-qoK"/>
+                                </constraints>
+                                <state key="normal" title="Flip UP">
+                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstItem="euM-gG-rsy" firstAttribute="top" secondItem="Cvn-74-UDm" secondAttribute="bottom" constant="15" id="1QV-rg-Tod"/>
+                            <constraint firstItem="f4y-yR-w13" firstAttribute="top" secondItem="euM-gG-rsy" secondAttribute="bottom" constant="69" id="3SW-BR-UJK"/>
+                            <constraint firstItem="euM-gG-rsy" firstAttribute="centerX" secondItem="Ups-Ia-1tD" secondAttribute="centerX" id="Ko8-Bc-nUZ"/>
+                            <constraint firstItem="Cvn-74-UDm" firstAttribute="leading" secondItem="euM-gG-rsy" secondAttribute="leading" id="Xg6-g4-Bc3"/>
+                        </constraints>
+                    </view>
+                    <connections>
+                        <outlet property="btnFlipDOWN" destination="euM-gG-rsy" id="oST-7p-BSb"/>
+                        <outlet property="btnFlipUP" destination="Cvn-74-UDm" id="ozh-12-zpU"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hEQ-R9-QfT" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="16" y="-339"/>
+        </scene>
+    </scenes>
+</document>
