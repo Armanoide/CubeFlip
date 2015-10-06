@@ -9,23 +9,23 @@
 import UIKit
 import QuartzCore
 
-@IBDesignable class CubeFlip: UIView {
+@IBDesignable public class CubeFlip: UIView {
     
-    private var view1               : UIView!
-    private var view2               : UIView!
-    private (set) var viewOff       : UIView!
-    private (set) var viewOn        : UIView!
-    private var isAnimated          : Bool = false
+    private var view1                       : UIView!
+    private var view2                       : UIView!
+    private (set) public var viewOff        : UIView!
+    private (set) public var viewOn         : UIView!
+    private var isAnimated                  : Bool   = false
     
-    internal var duration            : Double    = 1.2
-    internal var perspective         : CGFloat   = 500
+    public var duration                     : Double  = 1.2
+    public var perspective                  : CGFloat = 500
     
     override init(frame: CGRect) {
         super.init(frame: frame)
         self.xibSetup()
     }
     
-    required init?(coder aDecoder: NSCoder) {
+    required public init?(coder aDecoder: NSCoder) {
         super.init(coder: aDecoder)
         if self.subviews.count == 0 {
             self.xibSetup()
@@ -49,8 +49,7 @@ import QuartzCore
         self.viewOff.removeFromSuperview()
     }
     
-    func DEGREES_TO_RADIANS(degress : CGFloat) -> CGFloat { return degress * CGFloat(M_PI) / 180 }
-    
+    private func DEGREES_TO_RADIANS(degress : CGFloat) -> CGFloat { return degress * CGFloat(M_PI) / 180 }
     
     private func makeCloneViewIntoImage(viewOrigin : UIView) -> UIImageView {
         UIGraphicsBeginImageContext(viewOrigin.frame.size)
@@ -92,7 +91,7 @@ import QuartzCore
         return (imageOff, imageOn)
     }
     
-    internal func flipDown() {
+    public func flipDown() {
         
         let imageOff    : UIImageView!
         let imageOn     : UIImageView!
@@ -126,7 +125,7 @@ import QuartzCore
         }
     }
     
-    internal func flipUp() {
+    public func flipUp() {
         
         let imageOff    : UIImageView!
         let imageOn     : UIImageView!
