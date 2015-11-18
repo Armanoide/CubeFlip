@@ -9,20 +9,28 @@
 import UIKit
 import QuartzCore
 
-@IBDesignable public class CubeFlip: UIView {
+@IBDesignable public class CubeFlip<T: UIView>: UIView {
     
-    private var view1                       : UIView!
-    private var view2                       : UIView!
-    private (set) public var viewOff        : UIView!
-    private (set) public var viewOn         : UIView!
+    public typealias CustomizeView = (T) -> ()
+    
+    private var view1                       : T!
+    private var view2                       : T!
+    private (set) public var viewOff        : T!
+    private (set) public var viewOn         : T!
     private var isAnimated                  : Bool   = false
     
-    public var duration                     : Double  = 1.2
+    public var duration                     : Double  = 0.5
     public var perspective                  : CGFloat = 500
     
-    override init(frame: CGRect) {
+    init(frame: CGRect, view1: T, view2: T) {
         super.init(frame: frame)
-        self.xibSetup()
+        self.view1      = view1
+        self.view2      = view2
+        
+        view1.frame = self.bounds
+        view2.frame = self.bounds
+        
+        self.subviewsSetup()
     }
     
     required public init?(coder aDecoder: NSCoder) {
@@ -34,12 +42,17 @@ import QuartzCore
     
     private func xibSetup() {
         
-        self.view1      = UIView(frame:self.bounds)
-        self.view2      = UIView(frame:self.bounds)
+        self.view1      = UIView(frame:self.bounds) as! T
+        self.view2      = UIView(frame:self.bounds) as! T
         
         self.view1.backgroundColor = UIColor.blackColor()
         self.view2.backgroundColor = UIColor.blueColor()
         
+        self.subviewsSetup()
+        
+    }
+    
+    private func subviewsSetup() {
         self.addSubview(self.view1)
         self.addSubview(self.view2)
         
@@ -91,10 +104,14 @@ import QuartzCore
         return (imageOff, imageOn)
     }
     
-    public func flipDown() {
+    public func flipDown(to: CustomizeView? = nil) {
         
         let imageOff    : UIImageView!
         let imageOn     : UIImageView!
+        
+        if let setupBlock = to {
+            setupBlock(self.viewOff)
+        }
         
         if let __ = self.commonSetupFlipStart() {
             imageOff    =  __.imageOff
@@ -125,10 +142,15 @@ import QuartzCore
         }
     }
     
-    public func flipUp() {
+    public func flipUp(to: CustomizeView? = nil) {
         
         let imageOff    : UIImageView!
         let imageOn     : UIImageView!
+        
+        if let setupBlock = to {
+            setupBlock(self.viewOff)
+        }
+        
         
         if let __ = self.commonSetupFlipStart() {
             imageOff    =  __.imageOff
