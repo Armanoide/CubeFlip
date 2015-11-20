@@ -8,9 +8,35 @@
 
 import UIKit
 
+class CubeSubView : UIView {
+    let label: UILabel = UILabel()
+    init () {
+        super.init(frame: CGRectZero)
+        label.text = "Default Text!"
+        label.textAlignment = .Center
+        self.addSubview(label)
+    }
+
+    required init?(coder aDecoder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
+    override func layoutSubviews() {
+        super.layoutSubviews()
+        label.frame = self.bounds
+    }
+    
+    func bgColor(color: UIColor) -> CubeSubView {
+        self.backgroundColor = color
+        return self
+    }
+    
+}
+
 class MasterViewController: UIViewController {
 
-    var cube : CubeFlip!
+    var cube : CubeFlip<CubeSubView>!
+    var counter: Int = 0
 
     @IBOutlet weak var btnFlipDOWN: UIButton!
     @IBOutlet weak var btnFlipUP: UIButton!
@@ -18,35 +44,25 @@ class MasterViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        self.cube = CubeFlip(frame: CGRectMake(10, 200, self.view.bounds.width - 20, 160))
-        
-        var text = UILabel(frame: self.cube.bounds)
-        text.textAlignment = .Center
-        text.text = "TEXT 1"
-        text.textColor = UIColor.whiteColor()
-        self.cube.viewOn.addSubview(text)
-        self.cube.viewOn.backgroundColor = UIColor.redColor()
-
-        text = UILabel(frame: self.cube.bounds)
-        text.textAlignment = .Center
-        text.text = "TEXT 2"
-        text.textColor = UIColor.whiteColor()
-        self.cube.viewOff.addSubview(text)
-        self.cube.viewOff.backgroundColor = UIColor.blueColor()
-
+        self.cube = CubeFlip(frame: CGRectMake(10, 200, self.view.bounds.width - 20, 160), view1: CubeSubView().bgColor(UIColor.redColor()), view2: CubeSubView().bgColor(UIColor.greenColor()))
         
         self.view.addSubview(cube)
         self.btnFlipDOWN.addTarget(self, action: "flipDown", forControlEvents: UIControlEvents.TouchUpInside)
         self.btnFlipUP.addTarget(self, action: "flipUP", forControlEvents: UIControlEvents.TouchUpInside)
     }
     
+    
     func flipUP()
     {
-        self.cube.flipUp()
+        self.cube.flipUp { (s: CubeSubView) -> () in
+            s.label.text = "Flip number: " + (--self.counter).description
+        }
     }
     
     func flipDown() {
-        self.cube.flipDown()
+        self.cube.flipDown { (s: CubeSubView) -> () in
+            s.label.text = "Flip number: " + (++self.counter).description
+        }
     }
     
 }
