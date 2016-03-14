@@ -42,11 +42,15 @@ class MasterViewController: UIViewController {
     
     func flipUP()
     {
-        self.cube.flipUp()
+        self.cube.flipUp { () -> Void in
+            print("over up")
+        }
     }
     
     func flipDown() {
-        self.cube.flipDown()
+        self.cube.flipDown { () -> Void in
+            print("over down")
+        }
     }
     
 }

@@ -68,9 +68,9 @@ import QuartzCore
         imageOff.removeFromSuperview()
         imageOn.removeFromSuperview()
         self.addSubview(self.viewOff)
-        let tmp = self.viewOff
-        self.viewOff = self.viewOn
-        self.viewOn = tmp
+        let tmp         = self.viewOff
+        self.viewOff    = self.viewOn
+        self.viewOn     = tmp
         self.isAnimated = !self.isAnimated
         
     }
@@ -91,7 +91,12 @@ import QuartzCore
         return (imageOff, imageOn)
     }
     
-    public func flipDown() {
+    /**
+     Flip down the rec
+     
+     - parameter completion: block call when animation is ended
+     */
+    public func flipDown(completion:(() -> Void)? = nil) {
         
         let imageOff    : UIImageView!
         let imageOn     : UIImageView!
@@ -120,12 +125,18 @@ import QuartzCore
             imageOn.frame.origin.y          = self.bounds.height
             
             
-            }) { (__) -> Void in
+            }) { (_) -> Void in
                 self.commonSetupFlipEnd(imageOff: imageOff, imageOn: imageOn)
+                completion?()
         }
     }
     
-    public func flipUp() {
+    /**
+     Flip up the rec
+     
+     - parameter completion: block call when animation is ended
+     */
+    public func flipUp(completion:(() -> Void)? = nil) {
         
         let imageOff    : UIImageView!
         let imageOn     : UIImageView!
@@ -153,8 +164,9 @@ import QuartzCore
             imageOff.layer.transform        = trans
             imageOff.frame.origin.y         = 0
             
-            }) { (__) -> Void in
+            }) { (_) -> Void in
                 self.commonSetupFlipEnd(imageOff: imageOff, imageOn: imageOn)
+                completion?()
         }
     }
     
