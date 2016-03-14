@@ -19,7 +19,6 @@ class MasterViewController: UIViewController {
         super.viewDidLoad()
         
         self.cube = CubeFlip(frame: CGRectMake(10, 200, self.view.bounds.width - 20, 160))
-        
         var text = UILabel(frame: self.cube.bounds)
         text.textAlignment = .Center
         text.text = "TEXT 1"

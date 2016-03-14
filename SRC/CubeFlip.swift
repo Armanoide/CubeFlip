@@ -17,8 +17,25 @@ import QuartzCore
     private (set) public var viewOn         : UIView!
     private var isAnimated                  : Bool   = false
     
+    /// The initial spring velocity. For smooth start to the animation, match this value to the view’s velocity as it was prior to attachment.
+    private var velocity                    : CGFloat = 0.5
+    /// The damping ratio for the spring animation as it approaches its quiescent state.
+    private var dampingRatio                : CGFloat = 0
+    
+    /// A mask of options indicating how you want to perform the animations. For a list of valid constants, see UIViewAnimationOptions.
+    private var option : UIViewAnimationOptions = UIViewAnimationOptions.CurveLinear
+    
+    /// The total duration of the animations, measured in seconds. If you specify a negative value or 0, the changes are made without animating them.
     public var duration                     : Double  = 1.2
+    
+    /// Perspective of the view.
     public var perspective                  : CGFloat = 500
+    
+    convenience init(frame: CGRect, duration:Double, perspective: CGFloat) {
+        self.init(frame: frame)
+        self.duration    = duration
+        self.perspective = perspective
+    }
     
     override init(frame: CGRect) {
         super.init(frame: frame)
@@ -112,7 +129,23 @@ import QuartzCore
         trans = CATransform3DTranslate ( trans, 0, 0, self.bounds.height/2 )
         imageOff.layer.transform     = trans
         
-        
+        UIView.animateWithDuration(self.duration, delay: 0, usingSpringWithDamping: self.dampingRatio, initialSpringVelocity: self.velocity, options: self.option, animations: { () -> Void in
+            
+            
+            trans                           = CATransform3DIdentity
+            imageOff.layer.transform        = trans
+            imageOff.frame.origin.y         = 0
+            
+            trans  = CATransform3DIdentity
+            trans = CATransform3DRotate(trans, self.DEGREES_TO_RADIANS(-90), 1, 0, 0 )
+            imageOn.layer.transform         = trans
+            
+            
+            }) { (_) -> Void in
+                self.commonSetupFlipEnd(imageOff: imageOff, imageOn: imageOn)
+                completion?()
+        }
+        /*
         UIView.animateKeyframesWithDuration(self.duration, delay: 0, options: .CalculationModeLinear, animations: { () -> Void in
             
             trans                           = CATransform3DIdentity
@@ -128,7 +161,7 @@ import QuartzCore
             }) { (_) -> Void in
                 self.commonSetupFlipEnd(imageOff: imageOff, imageOn: imageOn)
                 completion?()
-        }
+        } */
     }
     
     /**
