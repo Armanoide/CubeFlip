@@ -6,7 +6,7 @@ Simple flip cube, box in swift
 With CocoaPods:
 
     pod 'CubeFlip'
-Cocoapods requires iOS 8.0 or higher.
+CocoaPods requires iOS 8.0 or higher.
 If you're supporting iOS 7, or if you prefer, you can just drop CubeFlip.swift to your project.
 
 
