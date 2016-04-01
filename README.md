@@ -11,25 +11,21 @@ If you're supporting iOS 7, or if you prefer, you can just drop CubeFlip.swift t
 
 
 ## Basic
-     
-        let cube = CubeFlip(frame: CGRectMake(10, 200, self.view.bounds.width - 20, 160))
-        var text = UILabel(frame: self.cube.bounds)
-        text.textAlignment = .Center
-        text.text = "TEXT 1"
-        text.textColor = UIColor.whiteColor()
-        cube.viewOn.addSubview(text)
-        cube.viewOn.backgroundColor = UIColor.redColor()
 
-        text = UILabel(frame: self.cube.bounds)
-        text.textAlignment = .Center
-        text.text = "TEXT 2"
-        text.textColor = UIColor.whiteColor()
-        cube.viewOff.addSubview(text)
-        cube.viewOff.backgroundColor = UIColor.blueColor()
-        
+        let cube = CubeFlip(frame: CGRectMake(10, 100, self.view.bounds.width - 20, 160), view1: UIView()), view2: UIView()))
         self.view.addSubview(cube)
-        
+
+        cube.flipUp { (s: UIView) -> () in
+        }
+
+## Animation
+You can change animation with proprety animationWith.
+       
+        cube.animationWith = CubeFlipAnimation.Bouncing
+
+
 ## Contributors
-thanks to [badeleux] (https://github.com/badeleux) to adding a new simple way to customizing views on the fly
+thanks to [badeleux] (https://github.com/badeleux) to adding a new simple way to customizing views on the fly.
 
 ![alt tag](https://github.com/Armanoide/CubeFlip/blob/master/DEMO/demo.gif)
+
