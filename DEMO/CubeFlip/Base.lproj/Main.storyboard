@@ -29,7 +29,7 @@
                                 </state>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Cvn-74-UDm">
-                                <rect key="frame" x="200" y="456" width="200" height="30"/>
+                                <rect key="frame" x="200" y="463" width="200" height="30"/>
                                 <color key="backgroundColor" red="0.20392156859999999" green="0.39607843139999999" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="width" constant="200" id="1cb-is-6Ov"/>
@@ -39,18 +39,46 @@
                                     <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
                                 </state>
                             </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="AGK-uZ-Tj7">
+                                <rect key="frame" x="200" y="425" width="200" height="30"/>
+                                <color key="backgroundColor" red="0.20392156859999999" green="0.39607843139999999" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="MzL-lh-280"/>
+                                    <constraint firstAttribute="height" constant="30" id="wEm-G7-o7O"/>
+                                </constraints>
+                                <state key="normal" title="Flip UP BOUNCING">
+                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KXN-ob-hNa">
+                                <rect key="frame" x="200" y="387" width="200" height="30"/>
+                                <color key="backgroundColor" red="0.20392156859999999" green="0.39607843139999999" blue="0.70588235290000001" alpha="1" colorSpace="calibratedRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="200" id="4ba-sU-8cb"/>
+                                    <constraint firstAttribute="height" constant="30" id="DCR-AK-HGy"/>
+                                </constraints>
+                                <state key="normal" title="Flip UP WHIZZING">
+                                    <color key="titleColor" red="0.93725490199999995" green="0.93725490199999995" blue="0.95686274510000002" alpha="1" colorSpace="calibratedRGB"/>
+                                </state>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                         <constraints>
-                            <constraint firstItem="euM-gG-rsy" firstAttribute="top" secondItem="Cvn-74-UDm" secondAttribute="bottom" constant="15" id="1QV-rg-Tod"/>
+                            <constraint firstItem="euM-gG-rsy" firstAttribute="top" secondItem="Cvn-74-UDm" secondAttribute="bottom" constant="8" id="1QV-rg-Tod"/>
                             <constraint firstItem="f4y-yR-w13" firstAttribute="top" secondItem="euM-gG-rsy" secondAttribute="bottom" constant="69" id="3SW-BR-UJK"/>
+                            <constraint firstItem="AGK-uZ-Tj7" firstAttribute="top" secondItem="KXN-ob-hNa" secondAttribute="bottom" constant="8" id="90d-Yr-LNc"/>
+                            <constraint firstItem="AGK-uZ-Tj7" firstAttribute="centerX" secondItem="Ups-Ia-1tD" secondAttribute="centerX" id="9LA-W6-72A"/>
                             <constraint firstItem="euM-gG-rsy" firstAttribute="centerX" secondItem="Ups-Ia-1tD" secondAttribute="centerX" id="Ko8-Bc-nUZ"/>
                             <constraint firstItem="Cvn-74-UDm" firstAttribute="leading" secondItem="euM-gG-rsy" secondAttribute="leading" id="Xg6-g4-Bc3"/>
+                            <constraint firstItem="Cvn-74-UDm" firstAttribute="top" secondItem="AGK-uZ-Tj7" secondAttribute="bottom" constant="8" id="ZMK-le-QVb"/>
+                            <constraint firstItem="KXN-ob-hNa" firstAttribute="centerX" secondItem="Ups-Ia-1tD" secondAttribute="centerX" id="ZY9-uW-ACi"/>
                         </constraints>
                     </view>
                     <connections>
                         <outlet property="btnFlipDOWN" destination="euM-gG-rsy" id="oST-7p-BSb"/>
                         <outlet property="btnFlipUP" destination="Cvn-74-UDm" id="ozh-12-zpU"/>
+                        <outlet property="btnFlipUpBOUNCING" destination="AGK-uZ-Tj7" id="lj6-eJ-G8c"/>
+                        <outlet property="btnFlipUpWHIZZING" destination="KXN-ob-hNa" id="TJ5-nz-sT9"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="hEQ-R9-QfT" userLabel="First Responder" sceneMemberID="firstResponder"/>

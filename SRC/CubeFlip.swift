@@ -9,26 +9,35 @@
 import UIKit
 import QuartzCore
 
+public enum CubeFlipAnimation : CGFloat {
+    case None       = 1
+    case Bouncing   = 0.58
+    case Whizzing   = 0.1
+}
+
 @IBDesignable public class CubeFlip<T: UIView>: UIView {
     
     public typealias CustomizeView = (T) -> ()
     
+    public var animationWith                : CubeFlipAnimation = .Bouncing
     private var view1                       : T!
     private var view2                       : T!
     private (set) public var viewOff        : T!
     private (set) public var viewOn         : T!
-    private var isAnimated                  : Bool   = false
+    private var isAnimated                  : Bool    = false
     
-    public var duration                     : Double  = 0.5
+    
+    public var duration                     : Double  = 1
     public var perspective                  : CGFloat = 500
     
-    init(frame: CGRect, view1: T, view2: T) {
+    init(frame: CGRect, view1: T, view2: T, CubeFlipAnimation animation: CubeFlipAnimation = .Bouncing) {
         super.init(frame: frame)
-        self.view1      = view1
-        self.view2      = view2
+        self.view1          = view1
+        self.view2          = view2
+        self.animationWith  = animation
         
-        view1.frame = self.bounds
-        view2.frame = self.bounds
+        view1.frame         = self.bounds
+        view2.frame         = self.bounds
         
         self.subviewsSetup()
     }
@@ -125,9 +134,9 @@ import QuartzCore
         imageOff.layer.transform     = trans
         
         
-        UIView.animateKeyframesWithDuration(self.duration, delay: 0, options: .CalculationModeLinear, animations: { () -> Void in
+        UIView.animateWithDuration(self.duration, delay: 0, usingSpringWithDamping:  self.animationWith.rawValue, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
             
-            trans                           = CATransform3DIdentity
+                        trans                           = CATransform3DIdentity
             imageOff.layer.transform        = trans
             imageOff.frame.origin.y         = 0
             
@@ -135,7 +144,6 @@ import QuartzCore
             trans = CATransform3DRotate(trans, self.DEGREES_TO_RADIANS(-90), 1, 0, 0 )
             imageOn.layer.transform         = trans
             imageOn.frame.origin.y          = self.bounds.height
-            
             
             }) { (__) -> Void in
                 self.commonSetupFlipEnd(imageOff: imageOff, imageOn: imageOn)
@@ -149,8 +157,7 @@ import QuartzCore
         
         if let setupBlock = to {
             setupBlock(self.viewOff)
-        }
-        
+        }        
         
         if let __ = self.commonSetupFlipStart() {
             imageOff    =  __.imageOff
@@ -164,7 +171,8 @@ import QuartzCore
         imageOff.frame.origin.y      = self.bounds.height
         imageOff.layer.transform     = trans
         
-        UIView.animateKeyframesWithDuration(self.duration, delay: 0, options: UIViewKeyframeAnimationOptions.CalculationModeLinear, animations: { () -> Void in
+        UIView.animateWithDuration(self.duration, delay: 0, usingSpringWithDamping:  self.animationWith.rawValue, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
+            
             
             trans                           = CATransform3DIdentity
             trans = CATransform3DRotate(trans, self.DEGREES_TO_RADIANS(90), 1, 0, 0 )
@@ -174,9 +182,11 @@ import QuartzCore
             trans                           = CATransform3DIdentity
             imageOff.layer.transform        = trans
             imageOff.frame.origin.y         = 0
+            self.layoutIfNeeded()
             
-            }) { (__) -> Void in
-                self.commonSetupFlipEnd(imageOff: imageOff, imageOn: imageOn)
+        }) { (_) in
+            self.commonSetupFlipEnd(imageOff: imageOff, imageOn: imageOn)
+   
         }
     }
     

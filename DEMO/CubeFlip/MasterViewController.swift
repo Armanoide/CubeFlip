@@ -16,7 +16,7 @@ class CubeSubView : UIView {
         label.textAlignment = .Center
         self.addSubview(label)
     }
-
+    
     required init?(coder aDecoder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
@@ -34,62 +34,67 @@ class CubeSubView : UIView {
 }
 
 class MasterViewController: UIViewController {
-
+    
     var cube : CubeFlip<CubeSubView>!
     var counter: Int = 0
-
-    @IBOutlet weak var btnFlipDOWN: UIButton!
-    @IBOutlet weak var btnFlipUP: UIButton!
-
+    
+    @IBOutlet private weak var btnFlipDOWN          : UIButton!
+    @IBOutlet private weak var btnFlipUP            : UIButton!
+    @IBOutlet private weak var btnFlipUpWHIZZING    : UIButton!
+    @IBOutlet private weak var btnFlipUpBOUNCING    : UIButton!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
-<<<<<<< HEAD
-        self.cube = CubeFlip(frame: CGRectMake(10, 200, self.view.bounds.width - 20, 160))
-        var text = UILabel(frame: self.cube.bounds)
-        text.textAlignment = .Center
-        text.text = "TEXT 1"
-        text.textColor = UIColor.whiteColor()
-        self.cube.viewOn.addSubview(text)
-        self.cube.viewOn.backgroundColor = UIColor.redColor()
-
-        text = UILabel(frame: self.cube.bounds)
-        text.textAlignment = .Center
-        text.text = "TEXT 2"
-        text.textColor = UIColor.whiteColor()
-        self.cube.viewOff.addSubview(text)
-        self.cube.viewOff.backgroundColor = UIColor.blueColor()
-
-=======
-        self.cube = CubeFlip(frame: CGRectMake(10, 200, self.view.bounds.width - 20, 160), view1: CubeSubView().bgColor(UIColor.redColor()), view2: CubeSubView().bgColor(UIColor.greenColor()))
->>>>>>> 59b3355e254978394f753d228256b63c89cf1912
         
+        self.cube = CubeFlip(frame: CGRectMake(10, 100, self.view.bounds.width - 20, 160), view1: CubeSubView().bgColor(UIColor.redColor()), view2: CubeSubView().bgColor(UIColor.greenColor()))
         self.view.addSubview(cube)
-        self.btnFlipDOWN.addTarget(self, action: "flipDown", forControlEvents: UIControlEvents.TouchUpInside)
-        self.btnFlipUP.addTarget(self, action: "flipUP", forControlEvents: UIControlEvents.TouchUpInside)
+        self.btnFlipDOWN.addTarget(self, action: #selector(MasterViewController.flipDown), forControlEvents: UIControlEvents.TouchUpInside)
+        self.btnFlipUP.addTarget(self, action: #selector(MasterViewController.flipUP), forControlEvents: UIControlEvents.TouchUpInside)
+        self.btnFlipUpWHIZZING.addTarget(self, action: #selector(MasterViewController.flipUPWhizzing), forControlEvents: UIControlEvents.TouchUpInside)
+        self.btnFlipUpBOUNCING.addTarget(self, action: #selector(MasterViewController.flipUPBouncing), forControlEvents: UIControlEvents.TouchUpInside)
+    }
+
+    func flipUPBouncing()
+    {
+        self.cube.animationWith = CubeFlipAnimation.Bouncing
+        
+        self.cube.flipUp { (s: CubeSubView) -> () in
+            self.counter -= 1
+            s.label.text = "Flip number: " + ( self.counter ).description
+        }
+        self.cube.animationWith = CubeFlipAnimation.None
+        
+    }
+    
+    func flipUPWhizzing()
+    {
+        self.cube.animationWith = CubeFlipAnimation.Whizzing
+        
+        self.cube.flipUp { (s: CubeSubView) -> () in
+            self.counter -= 1
+            s.label.text = "Flip number: " + ( self.counter ).description
+        }
+        self.cube.animationWith = CubeFlipAnimation.None
+        
     }
     
     
+
+    
     func flipUP()
     {
-<<<<<<< HEAD
-        self.cube.flipUp { () -> Void in
-            print("over up")
-=======
         self.cube.flipUp { (s: CubeSubView) -> () in
-            s.label.text = "Flip number: " + (--self.counter).description
->>>>>>> 59b3355e254978394f753d228256b63c89cf1912
+            self.counter -= 1
+            s.label.text = "Flip number: " + ( self.counter ).description
         }
     }
     
     func flipDown() {
-<<<<<<< HEAD
-        self.cube.flipDown { () -> Void in
-            print("over down")
-=======
+        
         self.cube.flipDown { (s: CubeSubView) -> () in
-            s.label.text = "Flip number: " + (++self.counter).description
->>>>>>> 59b3355e254978394f753d228256b63c89cf1912
+            self.counter += 1
+            s.label.text = "Flip number: " + (self.counter ).description
         }
     }
     

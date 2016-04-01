@@ -28,5 +28,8 @@ If you're supporting iOS 7, or if you prefer, you can just drop CubeFlip.swift t
         cube.viewOff.backgroundColor = UIColor.blueColor()
         
         self.view.addSubview(cube)
+        
+## Contributors
+thanks to [badeleux] (https://github.com/badeleux) to adding a new simple way to customizing views on the fly
 
 ![alt tag](https://github.com/Armanoide/CubeFlip/blob/master/DEMO/demo.gif)
