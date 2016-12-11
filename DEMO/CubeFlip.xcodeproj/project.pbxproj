@@ -12,9 +12,7 @@
 		AE4549A01BB0D6620015A98B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE45499E1BB0D6620015A98B /* Main.storyboard */; };
 		AE4549A21BB0D6620015A98B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = AE4549A11BB0D6620015A98B /* Assets.xcassets */; };
 		AE4549A51BB0D6620015A98B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = AE4549A31BB0D6620015A98B /* LaunchScreen.storyboard */; };
-		AE4549B01BB0D6620015A98B /* CubeFlipTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4549AF1BB0D6620015A98B /* CubeFlipTests.swift */; };
-		AE4549BB1BB0D6620015A98B /* CubeFlipUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4549BA1BB0D6620015A98B /* CubeFlipUITests.swift */; };
-		AE4549C91BB0D6F90015A98B /* CubeFlip.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4549C81BB0D6F90015A98B /* CubeFlip.swift */; settings = {ASSET_TAGS = (); }; };
+		AE4549C91BB0D6F90015A98B /* CubeFlip.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE4549C81BB0D6F90015A98B /* CubeFlip.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,11 +41,7 @@
 		AE4549A41BB0D6620015A98B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		AE4549A61BB0D6620015A98B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE4549AB1BB0D6620015A98B /* CubeFlipTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CubeFlipTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AE4549AF1BB0D6620015A98B /* CubeFlipTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeFlipTests.swift; sourceTree = "<group>"; };
-		AE4549B11BB0D6620015A98B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE4549B61BB0D6620015A98B /* CubeFlipUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = CubeFlipUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
-		AE4549BA1BB0D6620015A98B /* CubeFlipUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CubeFlipUITests.swift; sourceTree = "<group>"; };
-		AE4549BC1BB0D6620015A98B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		AE4549C81BB0D6F90015A98B /* CubeFlip.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; name = CubeFlip.swift; path = ../../SRC/CubeFlip.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -81,8 +75,6 @@
 			children = (
 				AE65A8C91BB4C1A400CECAF3 /* Frameworks */,
 				AE4549971BB0D6620015A98B /* CubeFlip */,
-				AE4549AE1BB0D6620015A98B /* CubeFlipTests */,
-				AE4549B91BB0D6620015A98B /* CubeFlipUITests */,
 				AE4549961BB0D6620015A98B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -109,24 +101,6 @@
 				AE4549A61BB0D6620015A98B /* Info.plist */,
 			);
 			path = CubeFlip;
-			sourceTree = "<group>";
-		};
-		AE4549AE1BB0D6620015A98B /* CubeFlipTests */ = {
-			isa = PBXGroup;
-			children = (
-				AE4549AF1BB0D6620015A98B /* CubeFlipTests.swift */,
-				AE4549B11BB0D6620015A98B /* Info.plist */,
-			);
-			path = CubeFlipTests;
-			sourceTree = "<group>";
-		};
-		AE4549B91BB0D6620015A98B /* CubeFlipUITests */ = {
-			isa = PBXGroup;
-			children = (
-				AE4549BA1BB0D6620015A98B /* CubeFlipUITests.swift */,
-				AE4549BC1BB0D6620015A98B /* Info.plist */,
-			);
-			path = CubeFlipUITests;
 			sourceTree = "<group>";
 		};
 		AE4549CA1BB0D7640015A98B /* SRC */ = {
@@ -211,13 +185,16 @@
 				TargetAttributes = {
 					AE4549941BB0D6620015A98B = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0820;
 					};
 					AE4549AA1BB0D6620015A98B = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0820;
 						TestTargetID = AE4549941BB0D6620015A98B;
 					};
 					AE4549B51BB0D6620015A98B = {
 						CreatedOnToolsVersion = 7.0;
+						LastSwiftMigration = 0820;
 						TestTargetID = AE4549941BB0D6620015A98B;
 					};
 				};
@@ -284,7 +261,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE4549B01BB0D6620015A98B /* CubeFlipTests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -292,7 +268,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				AE4549BB1BB0D6620015A98B /* CubeFlipUITests.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -422,6 +397,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.billa.CubeFlip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Debug;
 		};
@@ -433,6 +409,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.billa.CubeFlip;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 			};
 			name = Release;
 		};
@@ -444,6 +421,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.billa.CubeFlipTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CubeFlip.app/CubeFlip";
 			};
 			name = Debug;
@@ -456,6 +434,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.billa.CubeFlipTests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/CubeFlip.app/CubeFlip";
 			};
 			name = Release;
@@ -467,6 +446,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.billa.CubeFlipUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = CubeFlip;
 				USES_XCTRUNNER = YES;
 			};
@@ -479,6 +459,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.billa.CubeFlipUITests;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SWIFT_VERSION = 3.0;
 				TEST_TARGET_NAME = CubeFlip;
 				USES_XCTRUNNER = YES;
 			};

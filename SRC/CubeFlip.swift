@@ -10,27 +10,27 @@ import UIKit
 import QuartzCore
 
 public enum CubeFlipAnimation : CGFloat {
-    case None       = 1
-    case Bouncing   = 0.58
-    case Whizzing   = 0.1
+    case none       = 1
+    case bouncing   = 0.58
+    case whizzing   = 0.1
 }
 
-@IBDesignable public class CubeFlip<T: UIView>: UIView {
+@IBDesignable open class CubeFlip<T: UIView>: UIView {
     
     public typealias CustomizeView = (T) -> ()
     
-    public var animationWith                : CubeFlipAnimation = .Bouncing
-    private var view1                       : T!
-    private var view2                       : T!
-    private (set) public var viewOff        : T!
-    private (set) public var viewOn         : T!
-    private var isAnimated                  : Bool    = false
+    open var animationWith                : CubeFlipAnimation = .bouncing
+    fileprivate var view1                       : T!
+    fileprivate var view2                       : T!
+    fileprivate (set) open var viewOff        : T!
+    fileprivate (set) open var viewOn         : T!
+    fileprivate var isAnimated                  : Bool    = false
     
     
-    public var duration                     : Double  = 1
-    public var perspective                  : CGFloat = 500
+    open var duration                     : Double  = 1
+    open var perspective                  : CGFloat = 500
     
-    init(frame: CGRect, view1: T, view2: T, CubeFlipAnimation animation: CubeFlipAnimation = .Bouncing) {
+    init(frame: CGRect, view1: T, view2: T, CubeFlipAnimation animation: CubeFlipAnimation = .bouncing) {
         super.init(frame: frame)
         self.view1          = view1
         self.view2          = view2
@@ -49,19 +49,19 @@ public enum CubeFlipAnimation : CGFloat {
         }
     }
     
-    private func xibSetup() {
+    fileprivate func xibSetup() {
         
         self.view1      = UIView(frame:self.bounds) as! T
         self.view2      = UIView(frame:self.bounds) as! T
         
-        self.view1.backgroundColor = UIColor.blackColor()
-        self.view2.backgroundColor = UIColor.blueColor()
+        self.view1.backgroundColor = UIColor.black
+        self.view2.backgroundColor = UIColor.blue
         
         self.subviewsSetup()
         
     }
     
-    private func subviewsSetup() {
+    fileprivate func subviewsSetup() {
         self.addSubview(self.view1)
         self.addSubview(self.view2)
         
@@ -71,11 +71,11 @@ public enum CubeFlipAnimation : CGFloat {
         self.viewOff.removeFromSuperview()
     }
     
-    private func DEGREES_TO_RADIANS(degress : CGFloat) -> CGFloat { return degress * CGFloat(M_PI) / 180 }
+    fileprivate func DEGREES_TO_RADIANS(_ degress : CGFloat) -> CGFloat { return degress * CGFloat(M_PI) / 180 }
     
-    private func makeCloneViewIntoImage(viewOrigin : UIView) -> UIImageView {
+    fileprivate func makeCloneViewIntoImage(_ viewOrigin : UIView) -> UIImageView {
         UIGraphicsBeginImageContext(viewOrigin.frame.size)
-        viewOrigin.layer.renderInContext(UIGraphicsGetCurrentContext()!)
+        viewOrigin.layer.render(in: UIGraphicsGetCurrentContext()!)
         let __ = UIGraphicsGetImageFromCurrentImageContext()
         UIGraphicsEndImageContext()
         
@@ -86,7 +86,7 @@ public enum CubeFlipAnimation : CGFloat {
     }
     
     
-    private func commonSetupFlipEnd(imageOff imageOff : UIImageView, imageOn : UIImageView) {
+    fileprivate func commonSetupFlipEnd(imageOff : UIImageView, imageOn : UIImageView) {
         imageOff.removeFromSuperview()
         imageOn.removeFromSuperview()
         self.addSubview(self.viewOff)
@@ -97,7 +97,7 @@ public enum CubeFlipAnimation : CGFloat {
         
     }
     
-    private func commonSetupFlipStart() -> (imageOff:UIImageView, imageOn:UIImageView)? {
+    fileprivate func commonSetupFlipStart() -> (imageOff:UIImageView, imageOn:UIImageView)? {
         if self.isAnimated { return nil }
         
         self.isAnimated = !self.isAnimated
@@ -113,7 +113,7 @@ public enum CubeFlipAnimation : CGFloat {
         return (imageOff, imageOn)
     }
     
-    public func flipDown(to: CustomizeView? = nil) {
+    open func flipDown(_ to: CustomizeView? = nil) {
         
         let imageOff    : UIImageView!
         let imageOn     : UIImageView!
@@ -134,7 +134,7 @@ public enum CubeFlipAnimation : CGFloat {
         imageOff.layer.transform     = trans
         
         
-        UIView.animateWithDuration(self.duration, delay: 0, usingSpringWithDamping:  self.animationWith.rawValue, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
+        UIView.animate(withDuration: self.duration, delay: 0, usingSpringWithDamping:  self.animationWith.rawValue, initialSpringVelocity: 0, options: UIViewAnimationOptions(), animations: {
             
                         trans                           = CATransform3DIdentity
             imageOff.layer.transform        = trans
@@ -150,7 +150,7 @@ public enum CubeFlipAnimation : CGFloat {
         }
     }
     
-    public func flipUp(to: CustomizeView? = nil) {
+    open func flipUp(_ to: CustomizeView? = nil) {
         
         let imageOff    : UIImageView!
         let imageOn     : UIImageView!
@@ -171,7 +171,7 @@ public enum CubeFlipAnimation : CGFloat {
         imageOff.frame.origin.y      = self.bounds.height
         imageOff.layer.transform     = trans
         
-        UIView.animateWithDuration(self.duration, delay: 0, usingSpringWithDamping:  self.animationWith.rawValue, initialSpringVelocity: 0, options: UIViewAnimationOptions.CurveEaseInOut, animations: {
+        UIView.animate(withDuration: self.duration, delay: 0, usingSpringWithDamping:  self.animationWith.rawValue, initialSpringVelocity: 0, options: UIViewAnimationOptions(), animations: {
             
             
             trans                           = CATransform3DIdentity
